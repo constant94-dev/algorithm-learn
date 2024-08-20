@@ -2,7 +2,7 @@ package newmind_2408;
 
 import java.util.Arrays;
 
-public class Newmind_twosum {
+public class Twosum_1 {
     public int[] solution(int[] nums, int target) {
         int[] result = new int[2];
         int numLength = nums.length;
@@ -31,7 +31,7 @@ public class Newmind_twosum {
 
 
     public static void main(String[] args) {
-        Newmind_twosum test = new Newmind_twosum();
+        Twosum_1 test = new Twosum_1();
         int[] nums = {2,7,11,15};
         int target = 9;
         System.out.println(Arrays.toString(test.solution(nums, target)));
