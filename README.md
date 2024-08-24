@@ -7,6 +7,7 @@
   + Two Sum (problem number 1)
   + Best Time to Buy and Sell Stock (problem number 121)
   + Insert Interval (problem number 57)
+  + Majority Element (problem number 169)
   
 <h3> Issue Tracking </h3>
 
