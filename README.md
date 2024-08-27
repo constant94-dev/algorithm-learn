@@ -8,6 +8,7 @@
   + Best Time to Buy and Sell Stock (problem number 121)
   + Insert Interval (problem number 57)
   + Majority Element (problem number 169)
+  + Contains Duplicate (problem number 217)
   
 <h3> Issue Tracking </h3>
 
@@ -25,4 +26,15 @@
   + 2차원 리스트 → 2차원 배열로 변환
   + 새로운 배열의 end값이 비교중인 기존 배열 start값 보다 작다면 다음 요소들을 붙여서 반환
   + 기존 배열이 비어있을 경우 새로운 배열만 반환
+
++ <strong> problem number 217. </strong>
+  
+  + 첫 접근은 입력으로 주어진 배열의 각 수를 인덱스 번호로하는 새로운 인덱스 생성
+  + 새로운 배열의 인덱스를 입력 배열의 각 수가 출현하면 증가
+  + IndexOutOfBoundsException 발생
+    + 입력이 음수일 경우
+    + 입력 배열 중 {1,2,3,100000}일 경우
+    + 입력 배열이 하나일 경우
+  + 위 오류를 배열로만 처리하려다보니 경우의 수가 많아짐
+  + 고민하다 solution 확인. HashSet 구현해 해결.
 
