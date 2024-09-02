@@ -10,7 +10,9 @@
   + Majority Element (problem number 169)
   + Contains Duplicate (problem number 217)
   + Move Zeroes (problem number 283)
-  
+  + Squares of a Sorted Array (problem number 977)
+
+---
 <h3> Issue Tracking </h3>
 
 `problem number 121`
