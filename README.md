@@ -10,10 +10,20 @@
   + Majority Element (problem number 169)
   + Contains Duplicate (problem number 217)
   + Move Zeroes (problem number 283)
+  
+
+<h3> 24.09 (leetcode) </h3>
+
+`Array`
+
   + Squares of a Sorted Array (problem number 977)
 
+`String`
+
+  + Valid Palindrome (problem number 125)
+
 ---
-<h3> Issue Tracking </h3>
+<h3> Issue remembrance </h3>
 
 `problem number 121`
   
@@ -59,4 +69,10 @@ wrong answer.
   + 처음에는 상대적 위치를 고려했지만 코드 작성 하다보니 상대적 위치 조건을 잊어버림...
   + solution 확인. '0'이 아닌 수를 앞으로 옮긴 후
   + '0'이 채워져야 하는 position 을 기억해 해당 position 부터 끝 까지 채운다
+
+`problem number 125`
+
+  + ASCII TABLE 활용하면 실행시간을 줄일 수 있었다.
+
+![ascii table](images/ASCII_TABLE.png)
 
