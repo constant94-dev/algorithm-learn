@@ -21,6 +21,7 @@
 `String`
 
   + Valid Palindrome (problem number 125)
+  + Valid Anagram (problem number 242)
 
 ---
 <h3> Issue remembrance </h3>
@@ -74,5 +75,13 @@ wrong answer.
 
   + ASCII TABLE 활용하면 실행시간을 줄일 수 있었다.
 
-![ascii table](images/ASCII_TABLE.png)
+<img src="images/ASCII_TABLE.png" width="500" height="350"/>
+
+`problem number 242`
+
+  + Unicode Character는 한글, 한자, 이모지, 특수기호 등이 포함된다.
+  + solution은 compare() 사용 or codePoint 사용이 있다.
+  + 여기서는 각 문자의 codePoint 값을 구해 solution을 만들었다.
+
+> codePoint: 유니코드에서 각 문자를 나타내는 고유한 값
 
