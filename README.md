@@ -24,7 +24,7 @@
   + Valid Anagram (problem number 242)
 
 ---
-<h3> Issue remembrance </h3>
+<h3> Looking back on issue </h3>
 
 `problem number 121`
   
