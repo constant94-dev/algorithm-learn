@@ -22,6 +22,7 @@
 
   + Valid Palindrome (problem number 125)
   + Valid Anagram (problem number 242)
+  + Longest Palindrome (problem number 409)
 
 ---
 <h3> Looking back on issue </h3>
@@ -84,4 +85,11 @@ wrong answer.
   + 여기서는 각 문자의 codePoint 값을 구해 solution을 만들었다.
 
 > codePoint: 유니코드에서 각 문자를 나타내는 고유한 값
+
+`problem number 409`
+
+  + 문자열 관련 알고리듬은 Map 클래스를 자주 사용하게 된다.
+  + 짝수,홀수 연산을 위해 두 번의 stream을 만들었지만 하나로 통합할 수 있었다.
+  + 입력 값이 비어있을 때, 하나만 있을 때를 고려하자.
+  + 영어 대,소문자만 존재할 경우 ASCII 코드를 활용할 수 있다.
 
