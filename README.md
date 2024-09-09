@@ -23,6 +23,7 @@
   + Valid Palindrome (problem number 125)
   + Valid Anagram (problem number 242)
   + Longest Palindrome (problem number 409)
+  + Longest Common Prefix (problem number 14)
 
 ---
 <h3> Looking back on issue </h3>
@@ -93,3 +94,21 @@ wrong answer.
   + 입력 값이 비어있을 때, 하나만 있을 때를 고려하자.
   + 영어 대,소문자만 존재할 경우 ASCII 코드를 활용할 수 있다.
 
+`problem number 14`
+
+  + 처음 접근은 ASCII 코드를 저장해 비교했다. 이 접근은 빈도 수 확인에는 효과적이지만 공통 접두사 찾기에는 올바른 솔루션이 아니다.
+  + 다음 솔루션은 pivot(기준 문자열) 하나를 정하고 공통 접두사 찾기를 시도했다. 경우의 수가 너무 많아져서 디버깅 하며 수정했지만 끝이 나질 않는다.
+  + 결국 Solution을 확인했고 정렬된 문자열을 사용하게 되었을 때 첫번째 요소와 마지막 요소 문자열의 접두사가 가장 긴 공통 접두사가 되는 것을 확인
+  + because 문자열을 정렬하면 알파벳 사전 순으로 정렬되기 때문이다.
+
+```
+input array of string.
+ex1. {"flower", "flow", "flight"}
+ex2. {"abc","aaa"}
+ex3. {"cddd","cdab","cdaa","cdba"}
+
+after sorting the array.
+after1. {"flight", "flow", "flower"}
+after2. {"aaa","abc"}
+after3. {"cdaa","cdab","cdba","cddd"}
+```
