@@ -112,3 +112,14 @@ after1. {"flight", "flow", "flower"}
 after2. {"aaa","abc"}
 after3. {"cdaa","cdab","cdba","cddd"}
 ```
+
+```
+회고.
+공통 접두사를 찾을 때는 정렬된 문자열이 되는 것이 좋다라는 생각이 떠오르질 않음
+
+앞으로 문자열 관련 문제 풀이 시 고려해볼 것
+- 정렬 된 배열에서 비교
+- ASCII 코드 사용
+- pivot을 정하고 비교
+- left, right 값을 비교
+```
