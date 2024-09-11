@@ -25,6 +25,10 @@
   + Longest Palindrome (problem number 409)
   + Longest Common Prefix (problem number 14)
 
+`Math`
+
+  + Roman To Integer (problem number 13)
+
 ---
 <h3> Looking back on issue </h3>
 
@@ -122,4 +126,23 @@ after3. {"cdaa","cdab","cdba","cddd"}
 - ASCII 코드 사용
 - pivot을 정하고 비교
 - left, right 값을 비교
+```
+
+`problem number 13`
+
+  + 첫 접근 solution 시간/공간 복잡도 O(N), 실행 시간 6ms
+  + 다른 접근 solution 시간/공간 복잡도 O(N), 실행 시간 5ms
+  + 복잡도와 실행 시간의 측면으로 보면 큰 차이는 없음
+
+```
+회고.
+로마 숫자의 subtractive 규칙을 찾을 경우 역순 처리시 더 쉽게 처리할 수 있다.
+
+역순 처리를 사용해 본 적 있지만 해당 문제가 역순 처리로 어떻게 규칙을 찾을 수 있는지 떠오르지 않음
+로마 숫자 패턴을 알면 역순 처리가 생각나지 않았을까 추측
+
+역순 처리 접근 solution으로 작성한 로직 장점
++ 메서드 호출을 제거
++ Map.get() 호출 수 감소
++ 조건절이 간결해짐
 ```
