@@ -28,6 +28,7 @@
 `Math`
 
   + Roman To Integer (problem number 13)
+  + Palindrome Number (problem number 9)
 
 ---
 <h3> Looking back on issue </h3>
