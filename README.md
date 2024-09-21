@@ -30,6 +30,10 @@
   + Roman To Integer (problem number 13)
   + Palindrome Number (problem number 9)
 
+`Stack`
+
+  + Valid Parentheses (problem number 20)
+
 ---
 <h3> Looking back on issue </h3>
 
@@ -146,4 +150,18 @@ after3. {"cdaa","cdab","cdba","cddd"}
 + 메서드 호출을 제거
 + Map.get() 호출 수 감소
 + 조건절이 간결해짐
+```
+
+`problem number 20`
+
+  + 처음 접근은 input 문자열의 괄호의 순서가 무작위로 생각함. 경우의 수가 복잡해짐.
+  + 하지만, input 문자열 괄호는 순서가 존재함. 열린 괄호부터 입력되고 닫는 괄호가 입력되려면 항상 그 전 문자에 상응하는 열린 괄호가 존재함.
+
+```
+회고.
+문제 지문을 정확히 해석해야 함.
+
+문제 지문을 올바르게 해석하고 이해하지 못하면 경우의 수가 복잡해지고 올바른 답을 찾을 수 없다.
+
+Stack은 LIFO(Last-In First-Out) 동작방식을 가지고 Stack 클래스보다는 ArrayDeque 클래스가 성능이 더 좋음
 ```
