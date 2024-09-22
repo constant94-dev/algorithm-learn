@@ -33,6 +33,7 @@
 `Stack`
 
   + Valid Parentheses (problem number 20)
+  + Implement Queue Using Stacks (problem number 232)
 
 ---
 <h3> Looking back on issue </h3>
