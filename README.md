@@ -34,6 +34,7 @@
 
   + Valid Parentheses (problem number 20)
   + Implement Queue Using Stacks (problem number 232)
+  + Backspace String Compare (problem number 844)
 
 ---
 <h3> Looking back on issue </h3>
@@ -166,3 +167,23 @@ after3. {"cdaa","cdab","cdba","cddd"}
 
 Stack은 LIFO(Last-In First-Out) 동작방식을 가지고 Stack 클래스보다는 ArrayDeque 클래스가 성능이 더 좋음
 ```
+
+`problem number 844`
+
+  + 처음 접근은 문자열을 순회하며 백스페이스를 수행
+  + 수행 한 결과를 비교 후 반환
+  + 하지만, 문자 포인터를 지정해 비교하는 데 경우의 수가 많아짐
+  + solution 확인해보니 Stack 자료구조 사용하면 굉장히 간단함
+
+```
+회고.
+Easy 문제에서 많은 시간을 낭비하고 있다고 생각해 solution 확인
+
+Stack 자료구조 사용하니 간단히 solution을 만들 수 있었지만 공간 복잡도를 O(N) 사용
+Follow up 확인 후 공간 복잡도 O(N) → O(1) 변경 시도
+처음에 접근한 solution이 O(1) 공간 복잡도를 할 수 있는 방법
+하지만, 다양한 경우의 수를 고려하다보니 코드가 길어지고 문자열 포인터 지정에 대한 아이디어가 필요함
+
+해당 문제에 많은 시간을 투자하기 보다는 O(1) 접근 방법 확인 후 멈춤
+```
+
