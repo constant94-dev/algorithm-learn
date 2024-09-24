@@ -36,6 +36,10 @@
   + Implement Queue Using Stacks (problem number 232)
   + Backspace String Compare (problem number 844)
 
+`Binary`
+
+  + Add Binary (problem number 67)
+
 ---
 <h3> Looking back on issue </h3>
 
@@ -187,3 +191,21 @@ Follow up 확인 후 공간 복잡도 O(N) → O(1) 변경 시도
 해당 문제에 많은 시간을 투자하기 보다는 O(1) 접근 방법 확인 후 멈춤
 ```
 
+`problem number 67`
+
+  + 처음 접근한 solution은 RuntimeError 발생
+  + 문자열을 int or long 형태로 변환 해 값을 찾았지만 자료형 범위를 벗어나는 input 존재
+  + 다른 solution 생각 안나 올바른 solution 확인
+  + ASCII 숫자를 사용해 범위 문제 해결
+  + Decimal, Binary Form을 비교하며 solution 아이디어 얻어낼 수 있음
+
+```
+회고.
+long 자료형 범위를 벗어나는 input 존재할지 모름
+
+숫자 자료형 범위를 효과적으로 사용하기 위해서 ASCII 코드를 생각하자
+이진 수 Decimal, Binary Form을 고려하는 아이디어를 처음 봄
+
+숫자를 가지고 연산하거나 변환할 때 ASCII를 고려해보자
+십진 수 → 이진 수 변환 해주는 메서드 Integer.toBinaryString() 존재
+```
