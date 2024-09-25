@@ -39,6 +39,7 @@
 `Binary`
 
   + Add Binary (problem number 67)
+  + Counting Bits (problem number 338)
 
 ---
 <h3> Looking back on issue </h3>
@@ -208,4 +209,31 @@ long 자료형 범위를 벗어나는 input 존재할지 모름
 
 숫자를 가지고 연산하거나 변환할 때 ASCII를 고려해보자
 십진 수 → 이진 수 변환 해주는 메서드 Integer.toBinaryString() 존재
+```
+
+`problem number 338`
+
+  + 처음 접근한 solution은 시간 복잡도 O(NlogN)
+  + 시간 복잡도 O(NlogN) → O(N) solution 확인
+  + 비트 연산 사용과 결과 배열의 누적된 값을 재활용하는 동적 프로그래밍(Dynamic Programming) 기법 사용해 코드를 효과적으로 변경
+
+```
+회고.
++ 정수 i의 이진수 표현은 최대 log(i) 길이를 가진다
++ 비트연산의 동작방식과 누적된 배열 값을 어떻게 활용하는지가 중요
+
+비트연산 방식 AND(&)
+두 비트가 모두 1인 경우만 1을 반환
+101 (5)
+&
+100 (4)
+---
+100 (4)
+
+result[5] = result[5 & 4] + 1;
+result[5 & 4] = result[4];
+result[5] = result[4] + 1;
+
+result[4]의 비트 카운트는 이미 계산되어 있어 추가적인 계산을 피할 수 있다
+이렇게 해서 시간 복잡도를 O(NlogN) → O(N) 변경 됨
 ```
