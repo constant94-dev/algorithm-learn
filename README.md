@@ -40,6 +40,7 @@
 
   + Add Binary (problem number 67)
   + Counting Bits (problem number 338)
+  + Number of 1 Bits (problem number 191)
 
 ---
 <h3> Looking back on issue </h3>
@@ -236,4 +237,18 @@ result[5] = result[4] + 1;
 
 result[4]의 비트 카운트는 이미 계산되어 있어 추가적인 계산을 피할 수 있다
 이렇게 해서 시간 복잡도를 O(NlogN) → O(N) 변경 됨
+```
+
+`problem number 191`
+
+  + 처음 접근한 solution은 시간/공간 복잡도 O(logN)
+  + 최적화 solution을 확인
+  + 시간은 O(h) 공간은 O(1) 복잡도를 가지는 solution은 비트 연산 응용
+  + 비트 연산을 사용해 가장 오른쪽 '1'을 제거하며 설정된 비트 수를 계산
+
+```
+회고.
+이진 표현을 통한 비트 수 계산은 비트 연산을 항상 고려하자
+
+해당 문제에서는 공간 복잡도를 상수 시간으로 만들 수 있었고 시간 복잡도는 '1'의 개수가 적을 때 성능이 훨씬 빠르다는 장점이 있다
 ```
