@@ -42,6 +42,13 @@
   + Counting Bits (problem number 338)
   + Number of 1 Bits (problem number 191)
 
+
+<h3> 24.10 (programmers) </h3>
+
+`Hash`
+
+  + 전화번호 목록 (problem number 42577)
+
 ---
 <h3> Looking back on issue </h3>
 
