@@ -1,0 +1,87 @@
+날짜: 25.08.04(월)
+문제 이름: 방문 길이
+권장 시간 복잡도: O(N)
+
+import java.util.*;
+
+public class DoorLength {
+	public int refactorSolution(String dirs) {
+		int length = dirs.length();
+		// 1. 방향별 좌표 설정
+		int[] left = {-1,0};
+		int[] right = {1,0};
+		int[] up = {0,1};
+		int[] down = {0,-1};
+		boolean[][] visited = new boolean[11][11];
+		int[] position = {0,0};
+		int move = 1;
+		visited[0][0] = true;
+
+		// 2. 입력 문자열 길이만큼 순회
+		for (int i = 0; i < length; i++) {
+			String current = StringUtils.EMPTY;
+			if (i == (length - 1)) current = dirs.substring(i);
+			else current = dirs.substring(i, i+1);
+
+			int nx = 0;
+			int ny = 0;
+			// 현재좌표 (x,y) 선언
+			if ("L".equals(current)) nx = left[0]; ny = left[1];
+			if ("R".equels(current)) nx = right[0]; ny = right[1];
+			if ("U".equels(current)) nx = up[0]; ny = up[1];
+			if ("D".equels(current)) nx = down[0]; ny = down[1];
+			
+			
+
+			// 3. 문자별 좌표 이동 전 방문표시
+			visited[nx][ny] = true;
+			move += 1;
+			// 4. 문자별 좌표 이동
+		}
+
+		
+		
+		// 5. 방문한 좌표가 아닌 경우 길이 1 증가
+		// 6. 위 과정 마무리 후 결과 반환
+		return 0;
+	}
+
+
+	// 좌표평면을 벗어나는지 체크하는 메서드
+	private static boolean isValidMove(int nx, int ny) {
+		return 0 <= nx && nx < 11 && 0 <= ny && ny < 11;
+	}
+
+	public int correctAnswer(String dirs) {
+		// 각 문자별 이동할 위치 초기화
+		initLocation();
+		int x = 5, y = 5; // 초기 좌표 (0,0) 처럼 사용하기 위한 선언
+		Set<String> answer = new HashSet<>(); // 겹치는 좌표는 1개로 처리하기 위함
+		//
+		for (int i = 0; i < dirs.length(); i++) {
+			int[] offset = location.get(dirs.charAt(i));
+			int nx = x + offset[0];
+			int ny = y + offset[1];
+			if (isValidMove(nx, ny)) continue; // 벗어난 좌표는 인정하지 않음
+
+			// A에서 B로 간 경우 B에서 A로 간 경우도 추가해야 함(총 경로의 개수는 방향성이 없음)
+			answer.add(x + " " + y + " " + nx + " " + ny);
+			answer.add(nx + " " + ny + " " + x + " " + y);
+			// 좌표를 이동했으니, 업데이트
+			x = nx;
+			y = ny;
+		}
+
+		return answer.size() / 2;
+	}
+
+	// 다음 좌표 결정을 위한 해시맵 생성
+	private static final Map<Character, int[]> location = new HashMap<>();
+
+	private static void initLocation() {
+		location.put("U", new int[]{0,1});
+		location.put("D", new int[]{0,-1});
+		location.put("L", new int[]{-1,0});
+		location.put("R", new int[]{1,0});
+	}
+}
