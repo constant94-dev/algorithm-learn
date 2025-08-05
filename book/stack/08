@@ -1,0 +1,42 @@
+날짜: 25.08.05(화)
+문제 이름: 올바른 괄호
+권장 시간 복잡도: O(N)
+
+import java.util.*;
+
+public class CorrectBracket {
+	public boolean solution(String s) {
+		Deque<Character> stack = new ArrayDeque<>();
+		char[] brackets = s.toCharArray();
+		// 1. 문자열을 문자로 나누어 순회
+		for (char bracket : brackets) {
+			// 2. 열린 괄호인 경우 스택 push
+			if (bracket == "(") stack.push(bracket);
+			// 3. 닫힌 괄호인 경우 스택 pop
+			if (bracket == ")") {
+				if (stack.isEmpty()) return false; // 4. 스택 pop 시 비어있을 경우 올바르지 않은 괄호
+				stack.pop();
+			}
+		}
+		
+		// 5. 모든 문자 사용 후 스택 비어있을 경우 올바른 괄호
+		if (stack.isEmpty()) return true;
+		// 5-1. 아닌 경우 올바르지 않은 괄호
+		return false;
+	}
+
+	public boolean refactorSolution(String s) {
+		Deque<Character> stack = new ArrayDeque<>();
+		char[] brackets = s.toCharArray();
+
+		for (char bracket : brackets) {
+			if (bracket == "(") stack.push(bracket);
+			else {
+				// 4. 스택 pop 시 비어있을 경우 올바르지 않은 괄호 or 스택에서 빼낸 괄호가 현재 괄호와 같을 경우도 올바르지 않은 괄호이다.
+				if (stack.isEmpty() || stack.pop() == bracket) return false;
+			}
+		}
+		
+		return stack.isEmpty();
+	}
+}
