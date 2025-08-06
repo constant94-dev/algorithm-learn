@@ -1,0 +1,45 @@
+날짜: 25.08.06(수)
+문제 이름: 10진수를 2진수로 변환하기
+권장 시간 복잡도: O(logN)
+
+import java.util.*;
+
+public class ConverBinary {
+	public String solution(int decimal) {
+		Deque<Integer> stack = new ArrayDeque<>();
+		// 1. 입력 값이 0일 될 때까지 순회
+		while (decimal != 0) {
+			int remain = decimal % 2; // 2. 나머지 구하기
+			decimal = decimal / 2; // 3. 몫을 구하고 입력값으로 치환
+
+			stack.push(remain); // 4. 나머지 값을 스택에 푸시
+		}
+		
+		// 4. 스택 pop 하며 문자열 생성
+		StringBuilder builder = new StringBuilder();
+		while (!stack.isEmpty()) {
+			builder.append(String.valueOf(stack.pop()));
+		}
+		// 5. 생성된 문자열 반환
+		return builder.toString();
+	}
+
+	public String refactorSolution(int decimal) {
+		Deque<Integer> stack = new ArrayDeque<>();
+
+		while (decimal > 0) {
+			int remainder = decimal % 2;
+
+			stack.push(remainder);
+
+			decimal /= 2;
+		}
+		
+		StringBuilder builder = new StringBuilder();
+		while (!stack.isEmpty()) {
+			builder.append(stack.pop());
+		}
+		
+		return builder.toString();
+	}
+}
