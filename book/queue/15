@@ -1,0 +1,52 @@
+날짜: 25.08.07(목)
+문제 이름: 요세푸스 문제
+권장 시간 복잡도: O(N*K)
+
+import java.util.*;
+
+public class Josephus {
+	public int solution(int N, int K) {
+		// 1. 큐에 N 크기 만큼 원소 저장
+		Queue<Integer> queue = new ArrayDeque<>();
+		for (int i = 1; i <= N; i++) {
+			queue.addLast(i);
+		}
+		// 2. 큐가 비어있을 때까지 순회
+		int position = 1;
+		int result = 0;
+		while (!queue.isEmpty()) {
+			// 3. k 번째 이전 값을 poll 후 add
+			if (position < k) {
+				queue.addLast(queue.pollFirst());
+				position++;
+			}
+			// 4. k 번째 값 poll
+			if (position == k) {
+				result = queue.pollFirst();
+				position = 1;
+			}
+		}
+		
+		// 5. 순회 종료 직전 데이터 반환
+		return result;
+	}
+
+	public int refactorSolution(int N, int K) {
+		// 1. 1부터 N까지 번호를 deque에 추가
+		ArrayDeque<Integer> deque = new ArrayDeque<>();
+		for (int i = 1; i <= N; i++) {
+			deque.addLast(i);
+		}
+
+		// 2. deque에 하나의 요소가 남을 때까지 반복
+		while (deque.size() > 1) {
+			// 3. K번째 요소를 찾기 위해 앞에서부터 제거하고 뒤에 추가
+			for (int i = 0; i < K-1; i++) {
+				deque.addLast(deque.pollFirst());
+			}
+			deque.pollFirst(); // 4. K번째 요소 제거
+		}
+		
+		return deque.pollFirst(); // 5. 마지막으로 남은 요소 반환
+	}
+}
