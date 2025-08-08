@@ -1,0 +1,41 @@
+날짜: 25.08.08(금)
+문제 이름: 두 개의 수로 특정값 만들기
+권장 시간 복잡도: O(N + K)
+
+import java.util.*;
+
+public class TwoNumberToTarget {
+	public boolean solution(int[] arr, int target) {
+		// 1. 입력 배열 길이만큼 순회
+		for (int i = 0; i < arr.length; i++) {
+			// 2. 현재 요소 제외한 나머지 요소 순회
+			for (int j = i+1; j < arr.length; j++) {
+				// 3. (현재 요소 + 다음 요소) 값이 target 일 경우, true
+				int current = arr[i] + arr[j];
+				if (current == target) return true;
+			}
+		}
+		
+		// 4. (현재 요소 + 다음 요소) 값이 target 아닌 경우, false
+		return false;
+	}
+
+	/*
+	 * NOTE: ✅ 올바른 보완값: complement = target – number → "합이 target이 되는지" 검사
+	 *		 ❌ 잘못된 보완값: wrongComplement = number – target → "차가 target이 되는지" 검사 → 거짓 양성 발생
+	 *		 따라서, 두 수의 합을 찾을 땐 반드시 target – number 를 사용해야 합니다!
+	 */
+	public boolean refactorSolution(int[] arr, int target) {
+		// 이중 순회를 제거하기 위한 Set 자료구조 사용
+		Set<Integer> numbers = new HashSet<>();
+		
+		// target 에서 현재 원소를 뺀 값이 Set 데이터에 있는지 확인
+		for (int number : arr) {
+			if (numbers.containsKey(target - i)) return true;
+
+			numbers.put(number); // Set 자료구조에 현재 값 저장
+		}
+		
+		return false;
+	}
+}
