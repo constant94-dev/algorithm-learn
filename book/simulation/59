@@ -1,0 +1,64 @@
+날짜: 25.08.11(월)
+문제 이름: 배열 회전하기
+권장 시간 복잡도: O(N^2)
+
+import java.util.*;
+
+/* NOTE:
+ *	올바른 대입 패턴(시계 90°):
+ *	pull: new[i][j] = old[N-1-j][i]
+ *	push: new[j][N-1-i] = old[i][j]
+ *	항상 좌변=new(목적지), 우변=old(원본) 유지.
+ *	같은 배열에 바로 덮어쓰지 말 것(오염) → 별도 temp/new 배열 사용.
+ */
+class Solution {
+	public int[][] rotateArray(int[][] arr, int n) {
+		int N = arr.length; // 행렬 크기
+		// 원본 배열 복사
+		int[][] copyArr = new int[N][];
+		for (int i = 0; i < N; i++) {
+			copyArr[i] = Arrays.copyOf(arr[i], arr[i].length);
+		}
+		
+		// 1. 입력된 회전 수 만큼 순회
+		for (int r = 0; r < n; r++) {
+			int[][] temp = new int[N][N];
+			// 2. 2차원 배열 순회를 위한 이중 순회
+			for (int i = 0; i < N; i++) {
+				for (int j = 0; j < N; j++) {
+					// 3. 순회 간 회전 공식 사용
+					// 반시계 방향: A[i, j] = A[(N-1)-j, i]
+					// 시계 방향: A[i, j] = A[j, (N-1) - i]
+					temp[i][j] = copyArr[j][(N-1)-i];
+				}
+			}
+			copyArr = temp; // temp를 다음 회전의 기준 배열로 사용
+		}
+		
+		// 4. 위 과정 마무리 후 결과 배열 반환
+		return copyArr;
+	}
+
+	public int[][] refactorSolution(int[][] arr, int n) {
+		// 90도 회전 메서드 호출
+		for (int i = 0; i < n; i++) {
+			arr = refactorRotateArray(arr);
+		}
+		return arr;
+	}
+
+	// 2차원 배열을 인자로 받고, 90도 회전시키는 메서드
+	private int[][] refactorRotateArray(int[][] arr) {
+		int n = arr.length; // 배열 크기 저장
+		int[][] rotatedArr = new int[n][n]; // 배열 크기와 동일한 2차원 배열 생성(초기값 0)
+
+		// 배열 90도 회전
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < n; j++) {
+				rotatedArr[j][n-i-1] = arr[i][j]; // 시계 방향 회전 공식 사용
+			}
+		}
+
+		return rotatedArr;
+	}
+}
