@@ -1,0 +1,74 @@
+날짜: 25.08.14(목)
+문제 이름: 두 행렬을 곱한 후 전치 행렬 만들기
+권장 시간 복잡도: O(1)
+
+import java.util.*;
+/*
+ * | 잘못 오해할 수 있는 표기         | 의미 해석 문제                               |
+ * | ---------------------- | -------------------------------------- |
+ * | `result^transpose`     | ^가 “거듭제곱”처럼 보임                         |
+ * | `transpose = result^T` | result의 전치를 transpose 변수에 저장한다는 명확한 의미 |
+ */
+class Solution {
+    // matrix1(3x3) × matrix2(3x3)를 행 우선(row-major)으로 채운 뒤, 결과를 전치하여 반환
+    public static int[][] multipleTwoMatrixToTransposeMatrix(int[][] matrix1, int[][] matrix2) {
+        // 1) result = matrix1 × matrix2  (행 우선: i -> j -> k)
+        int[][] result = new int[3][3];
+        for (int i = 0; i < 3; i++) {
+            int[] matrix1i = matrix1[i]; // 같은 행을 재사용(캐시/인덱싱 유리)
+            int[] resulti = result[i];
+            for (int j = 0; j < 3; j++) {
+                int sum = 0;
+                for (int k = 0; k < 3; k++) {
+                    sum += matrix1i[k] * matrix2[k][j];
+                }
+                resulti[j] = sum; // 같은 행 i의 열 j들을 왼→오로 채움
+            }
+        }
+
+        // 2) result의 전치 행렬을 transpose에 저장
+        int[][] transpose = new int[3][3];
+        for (int i = 0; i < 3; i++) {
+            int[] resulti = result[i];
+            for (int j = 0; j < 3; j++) {
+                transpose[j][i] = resulti[j];
+            }
+        }
+        return transpose;
+    }
+
+---
+	public int[][] refactorMultipleTwoMatrixToTransposeMatrix(int[][] matrix1, int[][] matrix2) {
+		// 주어진 두 행렬을 곱함
+		int[][] multiplied = multiplyMatrices(matrix1, matrix2);
+		// 곱셈 결과의 전치 행렬을 계산
+		int[][] transposed = transposeMatrix(multiplied);
+		return transposed;
+	}
+
+	private int[][] transposeMatrix(int[][] matirx) {
+		int[][] result = new int[3][3]; // 결과 행렬을 0으로 초기화
+
+		// 전치 행렬 연산 수행
+		for (int i = 0; i < 3; i++) {
+			for (int j = 0; j < 3; j++) {
+				result[j][i] = matirx[i][j];
+			}
+		}
+
+		return result;
+	}
+
+	private int[][] multiplyMatrices(int[][] matrix1, int[][] matrix2) {
+		int[][] result = new int[3][3]; // 결과 행렬을 0으로 초기화
+
+		// 행렬 곱셈 연산 수행
+		for (int i = 0; i < 3; i++) {
+			for (int j = 0; j < 3; j++) {
+				for (int k = 0; k < 3; k++) {
+					result[i][j] += matrix1[i][k] * matrix2[k][j];
+				}
+			}
+		}
+	}
+}
