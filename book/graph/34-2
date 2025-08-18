@@ -1,0 +1,42 @@
+날짜: 25.08.18(월)
+문제 이름: 깊이 우선 탐색 순회
+권장 시간 복잡도: O(N^2)
+
+import java.util.*;
+
+class Solution {
+
+	public int[] traversal(int[][] graph, int start, int n) {
+		// 1) 간선 리스트 -> 인접행렬
+        int[][] adj = new int[n + 1][n + 1];
+        for (int[] e : graph) {
+            int u = e[0], v = e[1];
+            adj[u][v] = 1;
+            //adj[v][u] = 1; // 무방향 그래프라면 유지, 방향 그래프면 제거
+        }
+
+        boolean[] visited = new boolean[n+1];
+        ArrayDeque<Integer> stack = new ArrayDeque<>();
+        List<Integer> answers = new ArrayList<>();
+
+        // 시작 정점
+        stack.addLast(start);
+
+        while (!stack.isEmpty()) {
+        	int now = stack.pollLast(); // LIFO
+        	if (visited[now]) continue; // 방문한 경우 pass
+        	visited[now] = true;
+        	answers.add(now);
+
+        	// 이웃을 역순으로 넣으면 작은 번호부터 먼저 방문됨(스택 특성)
+        	for (int v = n; v >= 1; v--) { // 인접한 이웃 탐색
+        		if (adj[now][v] == 1 && !visited[v]) {
+            		stack.addLast(v); // 스택에 이웃 정점 추가
+        		}
+    		}
+        }
+		
+		// 위 과정 마무리 후 결과 반환
+		return answers.stream().mapToInt(Integer::intValue).toArray();
+	}
+}
